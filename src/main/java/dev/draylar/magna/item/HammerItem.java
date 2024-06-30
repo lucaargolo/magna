@@ -15,13 +15,13 @@ public class HammerItem extends PickaxeItem implements MagnaTool {
 
     private int breakRadius = 1;
 
-    public HammerItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings, int breakRadius) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public HammerItem(ToolMaterial toolMaterial, Settings settings, int breakRadius) {
+        super(toolMaterial, settings);
         this.breakRadius = breakRadius;
     }
 
-    public HammerItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public HammerItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override

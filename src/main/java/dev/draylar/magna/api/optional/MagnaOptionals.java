@@ -1,22 +1,18 @@
 package dev.draylar.magna.api.optional;
 
-import dev.draylar.magna.api.event.ToolMiningSpeedMultiplierCallback;
-import dev.draylar.magna.api.event.ToolRadiusCallback;
-import dev.draylar.magna.enchantment.CurseOfGigantismEnchantment;
 import dev.draylar.magna.item.ExcavatorItem;
 import dev.draylar.magna.item.HammerItem;
 import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
-import net.minecraft.registry.Registry;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MagnaOptionals {
 
-    public static Enchantment CURSE_OF_GIGANTISM;
+    public static RegistryKey<Enchantment> CURSE_OF_GIGANTISM = RegistryKey.of(RegistryKeys.ENCHANTMENT, Identifier.of("magna", "gigantism_curse"));
     private static final List<StackPredicate> validForCurseOfGigantism = new ArrayList<>();
 
     /**
@@ -29,34 +25,34 @@ public class MagnaOptionals {
      * and will increase the radius of the tool by 1 at the cost of 80% speed.
      */
     public static void optInForCurse() {
-        if(CURSE_OF_GIGANTISM == null) {
-            CURSE_OF_GIGANTISM = Registry.register(
-                    Registries.ENCHANTMENT,
-                    new Identifier("magna", "gigantism_curse"),
-                    new CurseOfGigantismEnchantment()
-            );
-        }
-
-        // setup 80% speed decrease while using the curse
-        ToolMiningSpeedMultiplierCallback.EVENT.register((tool, state, player, currentMultiplier) -> {
-            if(EnchantmentHelper.getLevel(MagnaOptionals.CURSE_OF_GIGANTISM, tool) > 0) {
-                return currentMultiplier * 0.2f;
-            }
-
-            return currentMultiplier;
-        });
-
-        // setup radius increase while the curse is applied to a tool
-        ToolRadiusCallback.EVENT.register((tool, currentRadius) -> {
-            if(EnchantmentHelper.getLevel(MagnaOptionals.CURSE_OF_GIGANTISM, tool) > 0) {
-                return currentRadius + 1;
-            }
-
-            return currentRadius;
-        });
-
-        // register base tools as valid for curse
-        registerCurseOfGigantismTool(stack -> stack.getItem() instanceof ExcavatorItem || stack.getItem() instanceof HammerItem);
+//        if(CURSE_OF_GIGANTISM == null) {
+//            CURSE_OF_GIGANTISM = Registry.register(
+//                    Registries.ENCHANTMENT,
+//                    new Identifier("magna", "gigantism_curse"),
+//                    new CurseOfGigantismEnchantment()
+//            );
+//        }
+//
+//        // setup 80% speed decrease while using the curse
+//        ToolMiningSpeedMultiplierCallback.EVENT.register((tool, state, player, currentMultiplier) -> {
+//            if(EnchantmentHelper.getLevel(MagnaOptionals.CURSE_OF_GIGANTISM, tool) > 0) {
+//                return currentMultiplier * 0.2f;
+//            }
+//
+//            return currentMultiplier;
+//        });
+//
+//        // setup radius increase while the curse is applied to a tool
+//        ToolRadiusCallback.EVENT.register((tool, currentRadius) -> {
+//            if(EnchantmentHelper.getLevel(MagnaOptionals.CURSE_OF_GIGANTISM, tool) > 0) {
+//                return currentRadius + 1;
+//            }
+//
+//            return currentRadius;
+//        });
+//
+//        // register base tools as valid for curse
+//        registerCurseOfGigantismTool(stack -> stack.getItem() instanceof ExcavatorItem || stack.getItem() instanceof HammerItem);
     }
 
     /**

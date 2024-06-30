@@ -1,5 +1,5 @@
 plugins {
-    id 'fabric-loom' version '1.2-SNAPSHOT'
+    id 'fabric-loom' version '1.7-SNAPSHOT'
     id 'maven-publish'
 }
 
@@ -23,12 +23,8 @@ dependencies {
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
     // config
-    modImplementation 'com.github.Draylar.omega-config:omega-config-base:1.0.8-1.17'
-    include 'com.github.Draylar.omega-config:omega-config-base:1.0.8-1.17'
-
-    // dev Reach Entity Attributes for testing tools with extended reach (or players)
-    // reach-entity-attributes has not yet been ported to 1.20.1
-    // modImplementation "com.jamieswhiteshirt:reach-entity-attributes:${project.rea_version}"
+    modImplementation "com.github.Draylar:omega-config:${project.omega_config_version}"
+    include "com.github.Draylar:omega-config:${project.omega_config_version}"
 }
 
 processResources {

@@ -27,15 +27,15 @@ public class MagnaTest implements ModInitializer {
         // Standard Hammer with a tool material of Diamond.
         Registry.register(
                 Registries.ITEM,
-                new Identifier("magna", "hammer_test"),
-                new HammerItem(ToolMaterials.DIAMOND, 0, 0, new Item.Settings())
+                Identifier.of("magna", "hammer_test"),
+                new HammerItem(ToolMaterials.DIAMOND, new Item.Settings())
         );
 
         // Standard Hammer with a tool material of Diamond and a modified depth.
         Registry.register(
                 Registries.ITEM,
-                new Identifier("magna", "depth_test"),
-                new HammerItem(ToolMaterials.DIAMOND, 0, 0, new Item.Settings()) {
+                Identifier.of("magna", "depth_test"),
+                new HammerItem(ToolMaterials.DIAMOND, new Item.Settings()) {
 
                     @Override
                     public int getDepth(ItemStack stack) {
@@ -47,8 +47,8 @@ public class MagnaTest implements ModInitializer {
         // Standard Excavator with a tool material of Wood.
         Registry.register(
                 Registries.ITEM,
-                new Identifier("magna", "excavator_test"),
-                new ExcavatorItem(ToolMaterials.WOOD, 0, 0, new Item.Settings())
+                Identifier.of("magna", "excavator_test"),
+                new ExcavatorItem(ToolMaterials.WOOD, new Item.Settings())
         );
 
 //        // Hammer with extended reach.
@@ -68,8 +68,8 @@ public class MagnaTest implements ModInitializer {
         // Hammer with a huge radius and no outline.
         Registry.register(
                 Registries.ITEM,
-                new Identifier("magna", "outline_test"),
-                new HammerItem(ToolMaterials.WOOD, 0, 0, new Item.Settings()) {
+                Identifier.of("magna", "outline_test"),
+                new HammerItem(ToolMaterials.WOOD, new Item.Settings()) {
                     @Override
                     public boolean renderOutline(World world, BlockHitResult ray, PlayerEntity player, ItemStack stack) {
                         return false;
@@ -90,8 +90,8 @@ public class MagnaTest implements ModInitializer {
         // Hammer that only breaks blocks inside its radius with an odd x or (exclusive) z position.
         Registry.register(
                 Registries.ITEM,
-                new Identifier("magna", "custom_breaker_test"),
-                new HammerItem(ToolMaterials.DIAMOND, 0, 0, new Item.Settings()) {
+                Identifier.of("magna", "custom_breaker_test"),
+                new HammerItem(ToolMaterials.DIAMOND, new Item.Settings()) {
                     private final BlockFinder TEST_FINDER = new BlockFinder() {
                         @Override
                         public List<BlockPos> findPositions(World world, PlayerEntity playerEntity, int radius, int depth) {

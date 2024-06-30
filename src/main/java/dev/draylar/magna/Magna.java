@@ -22,7 +22,7 @@ public class Magna implements ModInitializer {
      * @return {@link Identifier} with namespace of "magna" and path of the given name
      */
     public static Identifier id(String name) {
-        return new Identifier("magna", name);
+        return Identifier.of("magna", name);
     }
 
     /**

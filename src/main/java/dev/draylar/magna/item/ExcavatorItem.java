@@ -15,13 +15,13 @@ public class ExcavatorItem extends ShovelItem implements MagnaTool {
 
     private int breakRadius = 1;
 
-    public ExcavatorItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings, int breakRadius) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public ExcavatorItem(ToolMaterial toolMaterial, Settings settings, int breakRadius) {
+        super(toolMaterial, settings);
         this.breakRadius = breakRadius;
     }
 
-    public ExcavatorItem(ToolMaterial toolMaterial, int attackDamage, float attackSpeed, Settings settings) {
-        super(toolMaterial, attackDamage, attackSpeed, settings);
+    public ExcavatorItem(ToolMaterial toolMaterial, Settings settings) {
+        super(toolMaterial, settings);
     }
 
     @Override
